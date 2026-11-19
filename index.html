@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فَصيح | المدقق اللغوي العربي الخبير</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f7f5;
+      --surface: #ffffff;
+      --surface-alt: #eef5f1;
+      --primary: #0f5132;
+      --primary-hover: #0a3b24;
+      --primary-soft: #d1e7dd;
+      --text: #1c2420;
+      --text-muted: #5c6b63;
+      --border: #d5e0da;
+      --danger-bg: #fde8e8;
+      --danger-text: #9b1c1c;
+      --shadow: 0 4px 20px rgba(15, 81, 50, 0.06);
+      --radius: 14px;
+    }
+
+    body.dark {
+      --bg: #0f1714;
+      --surface: #16221d;
+      --surface-alt: #1e2e27;
+      --primary: #2ea873;
+      --primary-hover: #3bc489;
+      --primary-soft: #1a3a2d;
+      --text: #e8f0ec;
+      --text-muted: #98aba2;
+      --border: #283b32;
+      --danger-bg: #3b1818;
+      --danger-text: #f8b4b4;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background-color 0.25s, color 0.25s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Amiri', serif;
+      font-size: 24px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .brand-title h1 {
+      font-family: 'Amiri', serif;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--primary);
+    }
+
+    .brand-title p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 9px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: var(--surface-alt);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+
+    .btn-soft {
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-color: transparent;
+    }
+
+    body.dark .btn-soft {
+      color: #a3e4c7;
+    }
+
+    main {
+      max-width: 1000px;
+      width: 100%;
+      margin: 20px auto;
+      padding: 0 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 210px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-family: 'Amiri', 'Tajawal', serif;
+      font-size: 20px;
+      line-height: 1.9;
+      background: var(--bg);
+      color: var(--text);
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .clear-btn {
+      background: none;
+      border: none;
+      color: var(--danger-text);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .action-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .action-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tabs-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 8px 14px;
+      border-radius: 9px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .export-tools {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-sm {
+      padding: 6px 11px;
+      font-size: 12px;
+      border-radius: 8px;
+    }
+
+    .output-box {
+      margin-top: 16px;
+      min-height: 120px;
+      padding: 16px;
+      border-radius: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-family: 'Amiri', 'Tajawal', serif;
+      font-size: 20px;
+      line-height: 2;
+      white-space: pre-wrap;
+    }
+
+    .output-placeholder {
+      color: var(--text-muted);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 15px;
+      text-align: center;
+      padding: 24px 10px;
+    }
+
+    .error-banner {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 10px;
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      display: none;
+    }
+
+    .loader {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 24px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .spinner {
+      width: 22px;
+      height: 22px;
+      border: 3px solid var(--primary-soft);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* نافذة المستشار اللغوي */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 200;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-width: 600px;
+      width: 100%;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .modal-header h2 {
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    .advisor-answer {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      min-height: 100px;
+      max-height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-size: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo-circle">ف</div>
+        <div class="brand-title">
+          <h1>فَصيح</h1>
+          <p>المدقّق اللغوي العربي الخبير</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn" id="themeBtn" onclick="toggleTheme()">الوضع الليلي</button>
+        <button class="btn btn-soft" onclick="openAdvisor()">اسأل المستشار اللغوي</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <textarea id="inputText" placeholder="اكتب أو الصق النص العربي هنا لتدقيقه، تشكيله، أو إعرابه..." oninput="updateStats()"></textarea>
+      
+      <div class="stats-bar">
+        <span id="statsText">0 كلمة • 0 حرف • القراءة: أقل من دقيقة</span>
+        <button class="clear-btn" onclick="clearText()">مسح النص</button>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary" id="btnProofread" onclick="processText('proofread')">تدقيق النص</button>
+        <button class="btn" id="btnIrab" onclick="processText('irab')">الإعراب المفصل</button>
+        <button class="btn" id="btnTashkeel" onclick="processText('tashkeel')">التشكيل الكامل</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="tabs-bar">
+        <div class="tabs">
+          <button class="tab-btn active" id="tab-proofread" onclick="switchTab('proofread')">التصحيح والتشكيل</button>
+          <button class="tab-btn" id="tab-irab" onclick="switchTab('irab')">الإعراب</button>
+          <button class="tab-btn" id="tab-rhetoric" onclick="switchTab('rhetoric')">بدائل بلاغية</button>
+        </div>
+
+        <div class="export-tools">
+          <button class="btn btn-sm" onclick="copyOutput()">نسخ</button>
+          <button class="btn btn-sm" onclick="downloadTXT()">TXT</button>
+          <button class="btn btn-sm" onclick="downloadWord()">Word</button>
+        </div>
+      </div>
+
+      <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <span>جاري المعالجة اللغوية الدقيقة...</span>
+      </div>
+
+      <div class="error-banner" id="errorBanner">تعذّر الاتصال بخادم التدقيق.</div>
+
+      <div class="output-box" id="outputBox">
+        <div class="output-placeholder">ستظهر نتائج التدقيق اللغوي والتشكيل والإعراب هنا...</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- نافذة المستشار اللغوي -->
+  <div class="modal-backdrop" id="advisorModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>المستشار اللغوي</h2>
+        <button class="btn btn-sm" onclick="closeAdvisor()">إغلاق</button>
+      </div>
+      <textarea id="advisorInput" style="min-height: 90px; font-size: 16px;" placeholder="اسأل أي سؤال في النحو، الصرف، الإملاء، أو الفروق اللغوية..."></textarea>
+      <button class="btn btn-primary" id="btnAskAdvisor" onclick="askAdvisor()">إرسال السؤال</button>
+      <div class="advisor-answer" id="advisorAnswer">إجابة المستشار اللغوي ستظهر هنا...</div>
+    </div>
+  </div>
+
+  <footer>
+    تطوير وبرمجة: محمد سليم دويكات © 2026
+  </footer>
+
+  <script>
+    // مفتاح Google Gemini API
+    const GEMINI_API_KEY = "AQ.Ab8RN6K40xkK_wp4FSBLLHR6FmEP-ButD_0aIcDvMaURTst2zQ";
+    const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
+
+    const resultsStore = {
+      proofread: "",
+      irab: "",
+      rhetoric: ""
+    };
+    let currentTab = "proofread";
+
+    function updateStats() {
+      const text = document.getElementById("inputText").value.trim();
+      const words = text ? text.split(/\s+/).length : 0;
+      const chars = text.length;
+      const minutes = Math.max(1, Math.ceil(words / 180));
+      const readTime = words === 0 ? "أقل من دقيقة" : (minutes === 1 ? "دقيقة واحدة" : `${minutes} دقائق`);
+      document.getElementById("statsText").textContent = `${words} كلمة • ${chars} حرف • القراءة: ${readTime}`;
+    }
+
+    function clearText() {
+      document.getElementById("inputText").value = "";
+      updateStats();
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      document.getElementById("themeBtn").textContent = isDark ? "الوضع النهاري" : "الوضع الليلي";
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      document.getElementById(`tab-${tab}`).classList.add("active");
+
+      const outputBox = document.getElementById("outputBox");
+      if (resultsStore[tab]) {
+        outputBox.textContent = resultsStore[tab];
+      } else if (tab === "rhetoric" && document.getElementById("inputText").value.trim()) {
+        processText("rhetoric");
+      } else {
+        outputBox.innerHTML = '<div class="output-placeholder">لا توجد نتائج معروضة في هذا التبويب بعد...</div>';
+      }
+    }
+
+    async function callGemini(promptText) {
+      const response = await fetch(GEMINI_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-goog-api-key": GEMINI_API_KEY
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [{ text: promptText }]
+            }
+          ]
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!reply) {
+        throw new Error("Empty response");
+      }
+      return reply.trim();
+    }
+
+    async function processText(mode) {
+      const text = document.getElementById("inputText").value.trim();
+      const errorBanner = document.getElementById("errorBanner");
+      const loader = document.getElementById("loader");
+      const outputBox = document.getElementById("outputBox");
+
+      errorBanner.style.display = "none";
+
+      if (!text) {
+        errorBanner.textContent = "يرجى إدخال نص عربي أولاً للمعالجة.";
+        errorBanner.style.display = "block";
+        return;
+      }
+
+      let prompt = "";
+      let targetTab = "proofread";
+
+      if (mode === "proofread") {
+        targetTab = "proofread";
+        prompt = `أنت مدقق لغوي عربي خبير. صحّح النص التالي إملائياً ونحوياً وأسلوبياً مع الحفاظ على معناه، ثم اذكر قائمة موجزة بأهم التصحيحات وسببها النحوي أو الإملائي:\n\n${text}`;
+      } else if (mode === "tashkeel") {
+        targetTab = "proofread";
+        prompt = `أنت خبير في النحو والصرف العربي. اضبط النص التالي بالشكل الكامل (الحركات الإعرابية والبنيوية الدقيقة) دون تغيير الكلمات، وأخرج النص المشكول بوضوح:\n\n${text}`;
+      } else if (mode === "irab") {
+        targetTab = "irab";
+        prompt = `أنت أستاذ متخصص في النحو العربي. أعرب النص التالي إعراباً تفصيلياً واضحاً ومنظماً كلمةً بكلمة وجملةً بجملة:\n\n${text}`;
+      } else if (mode === "rhetoric") {
+        targetTab = "rhetoric";
+        prompt = `أنت أديب وبلاغي عربي. اقترح 3 صياغات بلاغية وفصيحة بديلة للنص التالي (صياغة رسمية، صياغة أدبية بليغة، وصياغة موجزة) مع بيان مواطن الجمال:\n\n${text}`;
+      }
+
+      currentTab = targetTab;
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      document.getElementById(`tab-${targetTab}`).classList.add("active");
+
+      loader.style.display = "flex";
+      outputBox.style.display = "none";
+
+      try {
+        const result = await callGemini(prompt);
+        resultsStore[targetTab] = result;
+        outputBox.textContent = result;
+      } catch (err) {
+        console.error(err);
+        errorBanner.textContent = "تعذّر الاتصال بخادم التدقيق. يرجى التحقق من الاتصال أو صلاحية المفتاح.";
+        errorBanner.style.display = "block";
+      } finally {
+        loader.style.display = "none";
+        outputBox.style.display = "block";
+      }
+    }
+
+    function openAdvisor() {
+      document.getElementById("advisorModal").style.display = "flex";
+    }
+
+    function closeAdvisor() {
+      document.getElementById("advisorModal").style.display = "none";
+    }
+
+    async function askAdvisor() {
+      const question = document.getElementById("advisorInput").value.trim();
+      const answerBox = document.getElementById("advisorAnswer");
+      const btn = document.getElementById("btnAskAdvisor");
+
+      if (!question) return;
+
+      btn.disabled = true;
+      answerBox.textContent = "جاري صياغة الإجابة اللغوية...";
+
+      try {
+        const prompt = `أنت مستشار لغوي عربي خبير في النحو والصرف والإملاء وفقه اللغة. أجب عن السؤال التالي بدقة علمية وأمثلة واضحة:\n\n${question}`;
+        const reply = await callGemini(prompt);
+        answerBox.textContent = reply;
+      } catch (err) {
+        answerBox.textContent = "تعذّر الاتصال بالمستشار اللغوي حالياً.";
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function copyOutput() {
+      const content = resultsStore[currentTab];
+      if (!content) return;
+      navigator.clipboard.writeText(content).then(() => {
+        alert("تم نسخ النص بنجاح!");
+      });
+    }
+
+    function downloadTXT() {
+      const content = resultsStore[currentTab];
+      if (!content) return;
+      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "faseeh-result.txt";
+      link.click();
+    }
+
+    function downloadWord() {
+      const content = resultsStore[currentTab];
+      if (!content) return;
+      const htmlContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head><meta charset='utf-8'><title>فَصيح</title></head>
+        <body dir="rtl" style="font-family: Arial, sans-serif; line-height: 1.8;">
+          <p>${content.replace(/\n/g, "<br>")}</p>
+        </body></html>`;
+      const blob = new Blob(["\ufeff", htmlContent], { type: "application/msword" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "faseeh-result.doc";
+      link.click();
+    }
+  </script>
+</body>
+</html>
